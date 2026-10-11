@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Urna</title>
+    <link rel="stylesheet" href="/estilo.css">
+    <link rel="stylesheet" href="/urna.css">
+</head>
+<body>
+<header class="topo-site">
+    <span class="marca">Simulador de urna</span>
+    <nav id="nav" aria-label="Páginas"></nav>
+</header>
+
+<main class="conteudo area-urna">
+    <p class="identificacao" id="identificacao"></p>
+    <div class="urna">
+        <div class="tela" id="tela" aria-live="assertive"></div>
+        <div class="teclado-area">
+            <div class="brasao">JUSTIÇA ELEITORAL</div>
+            <div class="teclado">
+                <button type="button" class="tecla" data-tecla="1">1</button>
+                <button type="button" class="tecla" data-tecla="2">2</button>
+                <button type="button" class="tecla" data-tecla="3">3</button>
+                <button type="button" class="tecla" data-tecla="4">4</button>
+                <button type="button" class="tecla" data-tecla="5">5</button>
+                <button type="button" class="tecla" data-tecla="6">6</button>
+                <button type="button" class="tecla" data-tecla="7">7</button>
+                <button type="button" class="tecla" data-tecla="8">8</button>
+                <button type="button" class="tecla" data-tecla="9">9</button>
+                <button type="button" class="tecla zero" data-tecla="0">0</button>
+            </div>
+            <div class="acoes">
+                <button type="button" class="acao branco" data-tecla="BRANCO">BRANCO</button>
+                <button type="button" class="acao corrige" data-tecla="CORRIGE">CORRIGE</button>
+                <button type="button" class="acao confirma" data-tecla="CONFIRMA">CONFIRMA</button>
+            </div>
+        </div>
+    </div>
+    <p class="dica">Teclado do computador: números, <kbd>Enter</kbd> = CONFIRMA, <kbd>Backspace</kbd> = CORRIGE, <kbd>B</kbd> = BRANCO.</p>
+</main>
+
+<script src="/comum.js"></script>
+<script src="/urna.js"></script>
+</body>
+</html>

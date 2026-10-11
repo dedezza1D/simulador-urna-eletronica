@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resultados</title>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+<body>
+<header class="topo-site">
+    <span class="marca">Simulador de urna</span>
+    <nav id="nav" aria-label="Páginas"></nav>
+</header>
+
+<main class="conteudo">
+    <h1>Resultados</h1>
+    <p class="subtitulo">Percentuais sobre votos válidos (brancos e nulos não entram). Mais da metade elege Presidente e Governador no 1º turno; Senador, maioria simples.</p>
+
+    <div class="linha" style="margin-bottom:12px">
+        <label class="inline"><input id="automatico" type="checkbox" checked> Atualizar a cada 5 segundos</label>
+        <button id="btn-atualizar" type="button" class="secundario pequeno">Atualizar agora</button>
+        <span id="atualizado" style="color:var(--suave);font-size:.85rem"></span>
+    </div>
+
+    <section class="painel" style="margin-bottom:16px">
+        <h2>Totalização</h2>
+        <div class="barra" style="height:12px"><span id="barra-secoes" style="width:0"></span></div>
+        <p id="secoes" style="margin:6px 0 0;font-size:.9rem"></p>
+    </section>
+
+    <div id="cargos" class="grade"></div>
+    <div id="log" class="log" style="margin-top:12px"></div>
+</main>
+
+<script src="/comum.js"></script>
+<script src="/resultados.js"></script>
+</body>
+</html>

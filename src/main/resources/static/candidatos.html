@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Candidatos</title>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+<body>
+<header class="topo-site">
+    <span class="marca">Simulador de urna</span>
+    <nav id="nav" aria-label="Páginas"></nav>
+</header>
+
+<main class="conteudo">
+    <h1>Candidatos</h1>
+    <p class="subtitulo">Cadastro sobre a API REST: validação no servidor, erros por campo, paginação e regras de negócio (409/422).</p>
+
+    <div class="grade">
+        <section class="painel" aria-labelledby="titulo-lista">
+            <h2 id="titulo-lista">Lista</h2>
+            <div class="linha">
+                <label>Cargo
+                    <select id="filtro-cargo">
+                        <option value="">Todos</option>
+                        <option value="PRESIDENTE">Presidente</option>
+                        <option value="GOVERNADOR">Governador</option>
+                        <option value="SENADOR">Senador</option>
+                    </select>
+                </label>
+                <label>Ordenar por
+                    <select id="ordem">
+                        <option value="cargo,asc">Cargo</option>
+                        <option value="numero,asc">Número</option>
+                        <option value="nome,asc">Nome</option>
+                        <option value="partido,asc">Partido</option>
+                    </select>
+                </label>
+            </div>
+            <div id="lista" style="margin-top:10px"></div>
+            <div class="linha">
+                <button id="pagina-anterior" type="button" class="secundario pequeno">‹ Anterior</button>
+                <span id="pagina-info" class="cresce" style="text-align:center;font-size:.85rem"></span>
+                <button id="pagina-seguinte" type="button" class="secundario pequeno">Seguinte ›</button>
+            </div>
+        </section>
+
+        <section class="painel" aria-labelledby="titulo-form">
+            <h2 id="titulo-form">Novo candidato</h2>
+            <form id="formulario" novalidate>
+                <input type="hidden" id="id">
+                <label>Cargo
+                    <select id="cargo" name="cargo">
+                        <option value="PRESIDENTE">Presidente (2 dígitos)</option>
+                        <option value="GOVERNADOR">Governador (2 dígitos)</option>
+                        <option value="SENADOR">Senador (3 dígitos)</option>
+                    </select>
+                </label>
+                <span class="erro-campo" data-erro="cargo"></span>
+                <label>Número <input id="numero" name="numero" inputmode="numeric" maxlength="3"></label>
+                <span class="erro-campo" data-erro="numero"></span>
+                <label>Nome <input id="nome" name="nome" maxlength="120"></label>
+                <span class="erro-campo" data-erro="nome"></span>
+                <label>Partido <input id="partido" name="partido" maxlength="10"></label>
+                <span class="erro-campo" data-erro="partido"></span>
+                <div class="linha">
+                    <button type="submit" id="btn-salvar">Cadastrar</button>
+                    <button type="button" id="btn-limpar" class="secundario">Limpar</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="painel" aria-labelledby="titulo-registro">
+            <h2 id="titulo-registro">Registro</h2>
+            <div id="log" class="log" aria-live="polite"></div>
+        </section>
+    </div>
+</main>
+
+<script src="/comum.js"></script>
+<script src="/candidatos.js"></script>
+</body>
+</html>

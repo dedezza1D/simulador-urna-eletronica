@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mesário</title>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+<body>
+<header class="topo-site">
+    <span class="marca">Simulador de urna</span>
+    <nav id="nav" aria-label="Páginas"></nav>
+</header>
+
+<main class="conteudo">
+    <h1>Terminal do mesário</h1>
+    <p class="subtitulo">Abra a <a id="link-urna" target="_blank" rel="noopener">urna desta seção</a> em outra aba: ela libera o voto quando você habilita um eleitor.</p>
+
+    <div class="grade">
+        <section class="painel" aria-labelledby="titulo-controle">
+            <h2 id="titulo-controle">Controle da urna</h2>
+            <div class="campos">
+                <label>Eleição <input id="eleicao" type="number" min="1"></label>
+                <label>Zona <input id="zona" type="number" min="1"></label>
+                <label>Seção <input id="secao" type="number" min="1"></label>
+            </div>
+            <p id="status" class="status" aria-live="polite">Consultando urna…</p>
+
+            <fieldset>
+                <legend>1. Abertura</legend>
+                <button id="btn-abrir" type="button">Abrir urna e emitir zerésima</button>
+            </fieldset>
+
+            <fieldset>
+                <legend>2. Habilitação do eleitor</legend>
+                <div class="linha">
+                    <label class="cresce">Título <input id="titulo" inputmode="numeric" maxlength="12" autocomplete="off" placeholder="12 dígitos"></label>
+                    <button id="btn-proximo" type="button" class="secundario">Próximo da fila</button>
+                </div>
+                <div class="linha">
+                    <button id="btn-habilitar" type="button">Habilitar</button>
+                    <button id="btn-cancelar" type="button" class="secundario">Cancelar habilitação</button>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>3. Encerramento</legend>
+                <div class="linha">
+                    <button id="btn-encerrar" type="button">Encerrar e gerar BU</button>
+                    <button id="btn-rdv" type="button" class="secundario">Ver RDV</button>
+                </div>
+            </fieldset>
+        </section>
+
+        <section class="painel" aria-labelledby="titulo-caderno">
+            <h2 id="titulo-caderno">Caderno de votação</h2>
+            <div class="linha">
+                <label class="inline"><input id="somente-pendentes" type="checkbox"> Só quem ainda não votou</label>
+            </div>
+            <div id="caderno"></div>
+            <div class="linha">
+                <button id="pagina-anterior" type="button" class="secundario pequeno">‹ Anterior</button>
+                <span id="pagina-info" class="cresce" style="text-align:center;font-size:.85rem"></span>
+                <button id="pagina-seguinte" type="button" class="secundario pequeno">Seguinte ›</button>
+            </div>
+        </section>
+
+        <section class="painel" aria-labelledby="titulo-registro">
+            <h2 id="titulo-registro">Registro</h2>
+            <div id="log" class="log" aria-live="polite"></div>
+        </section>
+    </div>
+</main>
+
+<script src="/comum.js"></script>
+<script src="/mesario.js"></script>
+</body>
+</html>

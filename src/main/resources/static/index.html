@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simulador de Urna</title>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+<body>
+<header class="topo-site">
+    <span class="marca">Simulador de urna</span>
+    <nav id="nav" aria-label="Páginas"></nav>
+</header>
+
+<main class="conteudo">
+    <h1>Simulador de urna eletrônica</h1>
+    <p class="subtitulo">Projeto de estudo com dados fictícios, sem vínculo com a Justiça Eleitoral.</p>
+
+    <div class="cartoes">
+        <a class="cartao" href="/mesario" data-rota><strong>Mesário</strong><span>Abre a urna (zerésima), habilita eleitores, encerra a votação e consulta o RDV.</span></a>
+        <a class="cartao" href="/urna" data-rota><strong>Urna</strong><span>Terminal do eleitor. Abra numa aba separada: ele é liberado pelo mesário.</span></a>
+        <a class="cartao" href="/transmissao" data-rota><strong>Transmissão</strong><span>Envia o BU assinado ao totalizador. Edite o conteúdo para ver a assinatura falhar.</span></a>
+        <a class="cartao" href="/resultados" data-rota><strong>Resultados</strong><span>Apuração por cargo, atualizada automaticamente.</span></a>
+        <a class="cartao" href="/candidatos" data-rota><strong>Candidatos</strong><span>Cadastro com validação, paginação e tratamento de erros da API.</span></a>
+    </div>
+
+    <section class="painel" style="margin-top:16px">
+        <h2>Roteiro</h2>
+        <ol class="passos">
+            <li>Em <b>Mesário</b>, abra a urna da zona 3, seção 2 (a única sem boletim nos dados de exemplo).</li>
+            <li>Abra a <b>Urna</b> em outra aba. Ela fica aguardando liberação.</li>
+            <li>No mesário, clique em <b>Próximo da fila</b> e <b>Habilitar</b>. A urna libera o voto.</li>
+            <li>Vote: Senador (3 dígitos), Governador e Presidente (2 dígitos). Use BRANCO, CORRIGE e CONFIRMA. Número inexistente vira voto nulo.</li>
+            <li>Repita com outros eleitores e depois <b>Encerre</b>: o BU é gerado a partir do RDV e assinado.</li>
+            <li>Em <b>Transmissão</b>, envie o BU. Altere qualquer caractere do conteúdo e envie de novo para ver a rejeição.</li>
+            <li>Em <b>Resultados</b>, a apuração chega a 100% das seções.</li>
+        </ol>
+    </section>
+</main>
+
+<script src="/comum.js"></script>
+<script>
+    document.querySelectorAll('[data-rota]').forEach((link) => {
+        link.href = link.getAttribute('href') + consultaSecao();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: votacao
+  datasource:
+    url: jdbc:h2:mem:votacao;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  mvc:
+    problemdetails:
+      enabled: true
+  web:
+    locale: pt_BR
+    locale-resolver: fixed
+
+# Para ver o SQL gerado pelo Hibernate, troque para DEBUG.
+logging:
+  level:
+    org.hibernate.SQL: INFO

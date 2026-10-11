@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transmissão</title>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+<body>
+<header class="topo-site">
+    <span class="marca">Simulador de urna</span>
+    <nav id="nav" aria-label="Páginas"></nav>
+</header>
+
+<main class="conteudo">
+    <h1>Ponto de transmissão</h1>
+    <p class="subtitulo">Lê o BU da urna encerrada (a "mídia de resultado") e envia ao totalizador, que confere a assinatura digital com a chave pública cadastrada para a urna.</p>
+
+    <div class="grade">
+        <section class="painel" aria-labelledby="titulo-bu">
+            <h2 id="titulo-bu">Boletim de urna</h2>
+            <div class="campos">
+                <label>Eleição <input id="eleicao" type="number" min="1"></label>
+                <label>Zona <input id="zona" type="number" min="1"></label>
+                <label>Seção <input id="secao" type="number" min="1"></label>
+            </div>
+            <div class="linha">
+                <button id="btn-carregar" type="button" class="secundario">Ler BU da urna</button>
+            </div>
+
+            <label style="margin-top:10px">Conteúdo assinado (edite para simular adulteração)
+                <textarea id="conteudo" rows="14" spellcheck="false"></textarea>
+            </label>
+            <label style="margin-top:6px">Assinatura (Ed25519, Base64)
+                <input id="assinatura" spellcheck="false">
+            </label>
+            <p id="comparacao" class="status">Nenhum BU carregado.</p>
+
+            <div class="linha">
+                <button id="btn-transmitir" type="button">Transmitir</button>
+                <button id="btn-adulterar" type="button" class="perigo">Somar 1 voto ao primeiro candidato</button>
+                <button id="btn-restaurar" type="button" class="secundario">Restaurar original</button>
+            </div>
+        </section>
+
+        <section class="painel" aria-labelledby="titulo-registro">
+            <h2 id="titulo-registro">Respostas do totalizador</h2>
+            <div id="log" class="log" aria-live="polite"></div>
+        </section>
+    </div>
+</main>
+
+<script src="/comum.js"></script>
+<script src="/transmissao.js"></script>
+</body>
+</html>

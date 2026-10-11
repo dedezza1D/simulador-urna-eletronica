@@ -1,0 +1,63 @@
+### Variáveis
+@host = http://localhost:8081
+@urna = {{host}}/api/eleicoes/1/zonas/3/secoes/2/urna
+
+### Candidatos a presidente, ordenados por número
+GET {{host}}/api/candidatos?cargo=PRESIDENTE&sort=numero
+
+### Criar candidato (201 + Location)
+POST {{host}}/api/candidatos
+Content-Type: application/json
+
+{"eleicaoId": 1, "cargo": "PRESIDENTE", "numero": "60", "nome": "Lia Campos", "partido": "pkl"}
+
+### Validação (400 com lista de campos)
+POST {{host}}/api/candidatos
+Content-Type: application/json
+
+{"eleicaoId": 1, "cargo": "PRESIDENTE", "numero": "6A", "nome": "", "partido": "PKL"}
+
+### Regra de negócio (422): senador precisa de 3 dígitos
+POST {{host}}/api/candidatos
+Content-Type: application/json
+
+{"eleicaoId": 1, "cargo": "SENADOR", "numero": "60", "nome": "Lia Campos", "partido": "PKL"}
+
+### Resultado parcial
+GET {{host}}/api/eleicoes/1/resultado?cargo=PRESIDENTE
+
+### --- Urna da zona 3, seção 2 ---
+
+### Abrir urna (zerésima)
+POST {{urna}}/abertura
+
+### Próximo eleitor que ainda não votou
+GET {{urna}}/caderno?pendentes=true&size=1
+
+### Habilitar eleitor
+POST {{urna}}/habilitacao
+Content-Type: application/json
+
+{"titulo": "900000000001"}
+
+### Votar (Senador 202, Governador em branco, Presidente 99 = nulo)
+POST {{urna}}/votos
+Content-Type: application/json
+
+{"escolhas": [
+  {"cargo": "SENADOR", "numero": "202", "branco": false},
+  {"cargo": "GOVERNADOR", "branco": true},
+  {"cargo": "PRESIDENTE", "numero": "99", "branco": false}
+]}
+
+### Encerrar (BU assinado)
+POST {{urna}}/encerramento
+
+### RDV
+GET {{urna}}/rdv
+
+### Transmitir: copie conteudo e assinatura da resposta do encerramento
+POST {{host}}/api/boletins/assinados
+Content-Type: application/json
+
+{"eleicaoId": 1, "zona": 3, "secao": 2, "conteudo": "COLE_AQUI", "assinatura": "COLE_AQUI"}
